@@ -1,91 +1,475 @@
 ---
 layout: default
+title: Jagat Education Center - Bimbel & Kursus Bahasa Inggris Jatirogo
 ---
 
-<!-- ==== CSS KHUSUS UNTUK LANDING PAGE & CAROUSEL ==== -->
-<style>
-  .hero-section { text-align: center; margin-bottom: 3rem; }
-  .btn-daftar { display: inline-block; background: #10b981; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 15px; }
-  .btn-daftar:hover { background: #059669; color: white; text-decoration: none; }
-  
-  /* Styling Carousel (Slider) */
-  .slider-container { width: 100%; max-width: 800px; margin: 0 auto 3rem; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }
-  .slider-inner { display: flex; transition: transform 0.5s ease-in-out; }
-  .slider-item { min-width: 100%; box-sizing: border-box; }
-  .slider-item img { width: 100%; height: auto; display: block; }
-  
-  /* Styling Program Unggulan */
-  .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 4rem; }
-  .program-card { background: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; text-align: center; }
-  .program-card h3 { margin-top: 0; color: #2563eb; font-size: 1.2rem; }
-</style>
-
-<!-- ==== 1. CAROUSEL / SLIDER GAMBAR ==== -->
-<div class="slider-container">
-  <div class="slider-inner" id="sliderInner">
-    <!-- Gambar 1 -->
-    <div class="slider-item">
-      <img src="https://via.placeholder.com/800x400/2563eb/ffffff?text=Selamat+Datang+di+JEC" alt="Banner 1">
-    </div>
-    <!-- Gambar 2 -->
-    <div class="slider-item">
-      <img src="https://via.placeholder.com/800x400/10b981/ffffff?text=Pendaftaran+Tahun+2026+Dibuka" alt="Banner 2">
-    </div>
-    <!-- Gambar 3 -->
-    <div class="slider-item">
-      <img src="https://via.placeholder.com/800x400/f59e0b/ffffff?text=Metode+JAGAT+-+Belajar+Lebih+Mudah" alt="Banner 3">
-    </div>
-  </div>
-</div>
-
-<!-- Script Sederhana Penggerak Carousel (Otomatis Geser Tiap 3 Detik) -->
-<script>
-  let slideIndex = 0;
-  const slides = document.querySelectorAll('.slider-item');
-  const totalSlides = slides.length;
-  const sliderInner = document.getElementById('sliderInner');
-
-  setInterval(() => {
-    slideIndex = (slideIndex + 1) % totalSlides;
-    sliderInner.style.transform = `translateX(-${slideIndex * 100}%)`;
-  }, 3000);
-</script>
-
-<!-- ==== 2. INFO LANDING PAGE ==== -->
-<div class="hero-section">
-  <h2 style="margin-bottom: 10px;">Bimbingan Belajar & Bahasa Inggris Terpadu</h2>
-  <p>Membangun fondasi bahasa yang kuat dan percaya diri untuk generasi unggul di Jatirogo, Tuban. Bersama <strong>Jagat Education Center</strong>, raih prestasimu sekarang!</p>
-  
-  <!-- Ganti nomor HP di bawah ini dengan nomor WA JEC -->
-  <a href="https://wa.me/6281234567890" class="btn-daftar">Daftar Sekarang via WhatsApp</a>
-</div>
-
-<div class="program-grid">
-  <div class="program-card">
-    <h3>English for Kids</h3>
-    <p>Belajar bahasa Inggris menyenangkan dengan metode interaktif untuk anak.</p>
-  </div>
-  <div class="program-card">
-    <h3>Bimbel Sekolah</h3>
-    <p>Pendampingan belajar untuk meningkatkan nilai akademik SD & SMP.</p>
-  </div>
-  <div class="program-card">
-    <h3>JAGAT Method</h3>
-    <p>Metode khusus agar siswa lebih cepat berani *speaking* (berbicara).</p>
-  </div>
-</div>
-
-<!-- ==== 3. DAFTAR BERITA / BLOG (Kode Bawaan Anda) ==== -->
-<h2 style="border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-bottom: 20px;">Berita & Pengumuman Terbaru</h2>
-
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-      <div class="entry">
-        {{ post.excerpt }}
+<!-- =============================== -->
+<!-- SECTION: HERO -->
+<!-- =============================== -->
+<section class="jec-hero" id="beranda">
+  <div class="jec-container">
+    <div class="jec-hero__inner">
+      <div class="jec-hero__content">
+        <span class="jec-hero__badge">
+          <span class="material-icons">verified</span>
+          Kursus Terpercaya di Jatirogo
+        </span>
+        <h1 class="jec-hero__title">
+          Wujudkan Generasi <span class="text-gradient">Cerdas & Berprestasi</span> Bersama JEC
+        </h1>
+        <p class="jec-hero__subtitle">
+          Bimbingan belajar dan kursus bahasa Inggris dengan metode JAGAT yang interaktif, 
+          terstruktur, dan menyenangkan. Bangun fondasi kuat untuk masa depan si kecil.
+        </p>
+        <div class="jec-hero__actions">
+          <a href="https://wa.me/6281234567890?text=Halo%20JEC%2C%20saya%20ingin%20mendaftar" class="jec-btn jec-btn--primary jec-btn--lg" target="_blank" rel="noopener">
+            <span class="material-icons">rocket_launch</span>
+            Daftar Sekarang
+          </a>
+          <a href="#program" class="jec-btn jec-btn--outline jec-btn--lg jec-scroll-to">
+            <span class="material-icons">visibility</span>
+            Lihat Program
+          </a>
+        </div>
+        <div class="jec-hero__stats">
+          <div class="jec-hero__stat">
+            <span class="material-icons jec-hero__stat-icon">groups</span>
+            <div>
+              <strong>500+</strong>
+              <span>Siswa Aktif</span>
+            </div>
+          </div>
+          <div class="jec-hero__stat">
+            <span class="material-icons jec-hero__stat-icon">emoji_events</span>
+            <div>
+              <strong>50+</strong>
+              <span>Penghargaan</span>
+            </div>
+          </div>
+          <div class="jec-hero__stat">
+            <span class="material-icons jec-hero__stat-icon">star</span>
+            <div>
+              <strong>4.9</strong>
+              <span>Rating</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Baca Selengkapnya</a>
-    </article>
-  {% endfor %}
-</div>
+      
+      <!-- Hero Image / Carousel -->
+      <div class="jec-hero__visual">
+        <div class="jec-slider" id="heroSlider">
+          <div class="jec-slider__track" id="sliderTrack">
+            <div class="jec-slider__slide">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Belajar di JEC">
+            </div>
+            <div class="jec-slider__slide">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Kegiatan kursus JEC">
+            </div>
+            <div class="jec-slider__slide">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80" alt="Siswa berprestasi">
+            </div>
+          </div>
+          <div class="jec-slider__dots" id="sliderDots"></div>
+          <button class="jec-slider__btn jec-slider__btn--prev" id="sliderPrev">
+            <span class="material-icons">chevron_left</span>
+          </button>
+          <button class="jec-slider__btn jec-slider__btn--next" id="sliderNext">
+            <span class="material-icons">chevron_right</span>
+          </button>
+        </div>
+        <!-- Floating badge -->
+        <div class="jec-hero__float-card jec-hero__float-card--1">
+          <span class="material-icons">trending_up</span>
+          <div>
+            <strong>Nilai Naik 85%</strong>
+            <span>Rata-rata peningkatan siswa</span>
+          </div>
+        </div>
+        <div class="jec-hero__float-card jec-hero__float-card--2">
+          <span class="material-icons">schedule</span>
+          <div>
+            <strong>Fleksibel</strong>
+            <span>Jadwal bisa disesuaikan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Wave Divider -->
+  <div class="jec-wave-divider">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120 Z" fill="currentColor"/>
+    </svg>
+  </div>
+</section>
+
+<!-- =============================== -->
+<!-- SECTION: ABOUT / TENTANG -->
+<!-- =============================== -->
+<section class="jec-section jec-section--about" id="tentang">
+  <div class="jec-container">
+    <div class="jec-section__header">
+      <span class="jec-section__badge">
+        <span class="material-icons-outlined">apartment</span>
+        Tentang Kami
+      </span>
+      <h2 class="jec-section__title">Mengapa Memilih <span class="text-gradient">Jagat Education Center?</span></h2>
+      <p class="jec-section__subtitle">
+        Lebih dari sekadar tempat les, kami adalah mitra tumbuh kembang anak Anda dalam meraih prestasi akademik dan kecakapan bahasa internasional.
+      </p>
+    </div>
+
+    <div class="jec-about__grid">
+      <div class="jec-about__content">
+        <div class="jec-about__features">
+          <div class="jec-about__feature">
+            <div class="jec-about__feature-icon">
+              <span class="material-icons">psychology</span>
+            </div>
+            <div>
+              <h4>Kurikulum Terstandar</h4>
+              <p>Disusun oleh tenaga pengajar berpengalaman dengan standar nasional dan internasional.</p>
+            </div>
+          </div>
+          <div class="jec-about__feature">
+            <div class="jec-about__feature-icon">
+              <span class="material-icons">groups</span>
+            </div>
+            <div>
+              <h4>Kelas Kecil & Fokus</h4>
+              <p>Maksimal 8-10 siswa per kelas memastikan setiap anak mendapat perhatian penuh.</p>
+            </div>
+          </div>
+          <div class="jec-about__feature">
+            <div class="jec-about__feature-icon">
+              <span class="material-icons">monitoring</span>
+            </div>
+            <div>
+              <h4>Progress Report Bulanan</h4>
+              <p>Laporan perkembangan siswa yang transparan langsung kepada orang tua.</p>
+            </div>
+          </div>
+          <div class="jec-about__feature">
+            <div class="jec-about__feature-icon">
+              <span class="material-icons">celebration</span>
+            </div>
+            <div>
+              <h4>Metode Menyenangkan</h4>
+              <p>Belajar sambil bermain, games, dan aktivitas interaktif agar anak betah dan antusias.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="jec-about__image">
+        <div class="jec-about__image-wrapper">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Suasana belajar di JEC">
+          <div class="jec-about__experience">
+            <span class="jec-about__experience-number">10+</span>
+            <span class="jec-about__experience-text">Tahun Pengalaman</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== -->
+<!-- SECTION: PROGRAMS -->
+<!-- =============================== -->
+<section class="jec-section jec-section--programs" id="program">
+  <div class="jec-container">
+    <div class="jec-section__header">
+      <span class="jec-section__badge">
+        <span class="material-icons-outlined">menu_book</span>
+        Program Unggulan
+      </span>
+      <h2 class="jec-section__title">Pilihan Program <span class="text-gradient">Terbaik untuk Anak Anda</span></h2>
+      <p class="jec-section__subtitle">
+        Dirancang khusus sesuai usia dan kebutuhan belajar, dari dasar hingga mahir.
+      </p>
+    </div>
+
+    <div class="jec-programs__grid">
+      <!-- Program Card 1 -->
+      <article class="jec-program-card jec-reveal">
+        <div class="jec-program-card__icon">
+          <span class="material-icons">child_care</span>
+        </div>
+        <div class="jec-program-card__level">Usia 5-9 Tahun</div>
+        <h3 class="jec-program-card__title">English for Kids</h3>
+        <p class="jec-program-card__desc">
+          Pengenalan bahasa Inggris melalui lagu, cerita, dan permainan interaktif. 
+          Membangun kosakata dasar dan kepercayaan diri berbicara.
+        </p>
+        <ul class="jec-program-card__features">
+          <li><span class="material-icons-outlined">check_circle</span> Vocabulary Building</li>
+          <li><span class="material-icons-outlined">check_circle</span> Story Telling</li>
+          <li><span class="material-icons-outlined">check_circle</span> Phonics & Pronunciation</li>
+          <li><span class="material-icons-outlined">check_circle</span> Creative Activities</li>
+        </ul>
+        <div class="jec-program-card__footer">
+          <span class="jec-program-card__price">Mulai Rp 250.000<span>/bulan</span></span>
+          <a href="https://wa.me/6281234567890?text=Halo%20JEC%2C%20saya%20tertarik%20dengan%20program%20English%20for%20Kids" class="jec-program-card__link" target="_blank">
+            Info Lengkap <span class="material-icons">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Program Card 2 -->
+      <article class="jec-program-card jec-program-card--featured jec-reveal">
+        <div class="jec-program-card__ribbon">
+          <span class="material-icons">star</span> Terpopuler
+        </div>
+        <div class="jec-program-card__icon">
+          <span class="material-icons">school</span>
+        </div>
+        <div class="jec-program-card__level">Usia 10-15 Tahun</div>
+        <h3 class="jec-program-card__title">English for Teens</h3>
+        <p class="jec-program-card__desc">
+          Program intensif untuk remaja dengan fokus conversation, grammar, dan persiapan ujian.
+          Speaking-first approach.
+        </p>
+        <ul class="jec-program-card__features">
+          <li><span class="material-icons-outlined">check_circle</span> Conversation Practice</li>
+          <li><span class="material-icons-outlined">check_circle</span> Grammar Mastery</li>
+          <li><span class="material-icons-outlined">check_circle</span> Public Speaking</li>
+          <li><span class="material-icons-outlined">check_circle</span> Exam Preparation</li>
+          <li><span class="material-icons-outlined">check_circle</span> Debate & Discussion</li>
+        </ul>
+        <div class="jec-program-card__footer">
+          <span class="jec-program-card__price">Mulai Rp 350.000<span>/bulan</span></span>
+          <a href="https://wa.me/6281234567890?text=Halo%20JEC%2C%20saya%20tertarik%20dengan%20program%20English%20for%20Teens" class="jec-program-card__link" target="_blank">
+            Info Lengkap <span class="material-icons">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Program Card 3 -->
+      <article class="jec-program-card jec-reveal">
+        <div class="jec-program-card__icon">
+          <span class="material-icons">calculate</span>
+        </div>
+        <div class="jec-program-card__level">SD & SMP</div>
+        <h3 class="jec-program-card__title">Bimbel Sekolah</h3>
+        <p class="jec-program-card__desc">
+          Pendampingan mata pelajaran Matematika, IPA, dan Bahasa Indonesia sesuai kurikulum sekolah. 
+          Fokus pada pemahaman konsep.
+        </p>
+        <ul class="jec-program-card__features">
+          <li><span class="material-icons-outlined">check_circle</span> Matematika</li>
+          <li><span class="material-icons-outlined">check_circle</span> IPA (Sains)</li>
+          <li><span class="material-icons-outlined">check_circle</span> Bahasa Indonesia</li>
+          <li><span class="material-icons-outlined">check_circle</span> Persiapan Ujian</li>
+        </ul>
+        <div class="jec-program-card__footer">
+          <span class="jec-program-card__price">Mulai Rp 200.000<span>/bulan</span></span>
+          <a href="https://wa.me/6281234567890?text=Halo%20JEC%2C%20saya%20tertarik%20dengan%20Bimbel%20Sekolah" class="jec-program-card__link" target="_blank">
+            Info Lengkap <span class="material-icons">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Program Card 4 -->
+      <article class="jec-program-card jec-reveal">
+        <div class="jec-program-card__icon">
+          <span class="material-icons">auto_awesome</span>
+        </div>
+        <div class="jec-program-card__level">Semua Usia</div>
+        <h3 class="jec-program-card__title">JAGAT Method</h3>
+        <p class="jec-program-card__desc">
+          Metode belajar eksklusif JEC: <strong>J</strong>oyful, <strong>A</strong>ctive, 
+          <strong>G</strong>roup-based, <strong>A</strong>pplication, <strong>T</strong>argeted.
+        </p>
+        <ul class="jec-program-card__features">
+          <li><span class="material-icons-outlined">check_circle</span> Joyful Learning</li>
+          <li><span class="material-icons-outlined">check_circle</span> Active Participation</li>
+          <li><span class="material-icons-outlined">check_circle</span> Group Collaboration</li>
+          <li><span class="material-icons-outlined">check_circle</span> Real Application</li>
+        </ul>
+        <div class="jec-program-card__footer">
+          <span class="jec-program-card__price">Bundling Hemat</span>
+          <a href="https://wa.me/6281234567890?text=Halo%20JEC%2C%20saya%20tertarik%20dengan%20JAGAT%20Method" class="jec-program-card__link" target="_blank">
+            Info Lengkap <span class="material-icons">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== -->
+<!-- SECTION: TESTIMONIALS -->
+<!-- =============================== -->
+<section class="jec-section jec-section--testimonials" id="testimoni">
+  <div class="jec-container">
+    <div class="jec-section__header">
+      <span class="jec-section__badge">
+        <span class="material-icons-outlined">format_quote</span>
+        Testimoni
+      </span>
+      <h2 class="jec-section__title">Apa Kata <span class="text-gradient">Orang Tua & Siswa?</span></h2>
+    </div>
+
+    <div class="jec-testimonials__grid">
+      <div class="jec-testimonial-card jec-reveal">
+        <div class="jec-testimonial-card__stars">
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+        </div>
+        <p class="jec-testimonial-card__text">
+          "Anak saya jadi lebih percaya diri berbicara bahasa Inggris. Metode JAGAT benar-benar membuat 
+          belajar terasa seperti bermain. Terima kasih JEC!"
+        </p>
+        <div class="jec-testimonial-card__author">
+          <div class="jec-testimonial-card__avatar">
+            <span class="material-icons">person</span>
+          </div>
+          <div>
+            <strong>Ibu Siti Rahayu</strong>
+            <span>Orang tua siswa, English for Kids</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jec-testimonial-card jec-reveal">
+        <div class="jec-testimonial-card__stars">
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+        </div>
+        <p class="jec-testimonial-card__text">
+          "Nilai matematika anak saya naik dari 65 jadi 90 setelah ikut bimbel di JEC. 
+          Gurunya sabar dan penjelasannya mudah dimengerti."
+        </p>
+        <div class="jec-testimonial-card__author">
+          <div class="jec-testimonial-card__avatar">
+            <span class="material-icons">person</span>
+          </div>
+          <div>
+            <strong>Bapak Ahmad Faisal</strong>
+            <span>Orang tua siswa, Bimbel SMP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jec-testimonial-card jec-reveal">
+        <div class="jec-testimonial-card__stars">
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+        </div>
+        <p class="jec-testimonial-card__text">
+          "Saya sudah les di tempat lain tapi baru di JEC bisa benar-benar ngomong Inggris. 
+          Kelasnya seru, teman-temannya asyik, gurunya keren!"
+        </p>
+        <div class="jec-testimonial-card__author">
+          <div class="jec-testimonial-card__avatar">
+            <span class="material-icons">person</span>
+          </div>
+          <div>
+            <strong>Dimas (14 tahun)</strong>
+            <span>Siswa, English for Teens</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== -->
+<!-- SECTION: BLOG / ARTIKEL -->
+<!-- =============================== -->
+<section class="jec-section jec-section--articles" id="artikel">
+  <div class="jec-container">
+    <div class="jec-section__header">
+      <span class="jec-section__badge">
+        <span class="material-icons-outlined">article</span>
+        Berita & Artikel
+      </span>
+      <h2 class="jec-section__title">Wawasan Terbaru dari <span class="text-gradient">JEC</span></h2>
+      <p class="jec-section__subtitle">
+        Tips belajar, info pendaftaran, dan kabar terkini dari Jagat Education Center.
+      </p>
+    </div>
+
+    <div class="jec-articles__grid">
+      {% for post in site.posts limit:6 %}
+      <article class="jec-article-card jec-reveal">
+        <div class="jec-article-card__image">
+          {% if post.image %}
+            <img loading="lazy" src="{{ post.image }}" alt="{{ post.title }}">
+          {% else %}
+            <img loading="lazy" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Artikel JEC">
+          {% endif %}
+          <div class="jec-article-card__category">
+            <span class="material-icons-outlined">label</span>
+            {{ post.categories | first | default: "Artikel" }}
+          </div>
+        </div>
+        <div class="jec-article-card__body">
+          <div class="jec-article-card__meta">
+            <span class="material-icons-outlined">calendar_today</span>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %B %Y" }}</time>
+          </div>
+          <h3 class="jec-article-card__title">
+            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+          </h3>
+          <p class="jec-article-card__excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+          <a href="{{ site.baseurl }}{{ post.url }}" class="jec-article-card__link">
+            Baca Selengkapnya <span class="material-icons">arrow_forward</span>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if site.posts.size > 6 %}
+    <div class="jec-section__action">
+      <a href="{{ site.baseurl }}/archive" class="jec-btn jec-btn--outline">
+        <span class="material-icons">library_books</span>
+        Lihat Semua Artikel
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- =============================== -->
+<!-- SECTION: CTA -->
+<!-- =============================== -->
+<section class="jec-section jec-section--cta" id="kontak">
+  <div class="jec-container">
+    <div class="jec-cta__card">
+      <div class="jec-cta__content">
+        <span class="material-icons jec-cta__icon">auto_awesome</span>
+        <h2>Siap Memulai Perjalanan Belajar Anak Anda?</h2>
+        <p>Daftarkan sekarang dan dapatkan <strong>FREE TRIAL CLASS</strong> untuk pengalaman belajar yang tak terlupakan bersama JEC.</p>
+        <div class="jec-cta__actions">
+          <a href="https://wa.me/6281234567890?text=Halo%20JEC%2C%20saya%20ingin%20mendaftar%20Free%20Trial" class="jec-btn jec-btn--white jec-btn--lg" target="_blank" rel="noopener">
+            <span class="material-icons">chat</span>
+            Hubungi via WhatsApp
+          </a>
+          <a href="tel:+6281234567890" class="jec-btn jec-btn--ghost jec-btn--lg">
+            <span class="material-icons">phone</span>
+            Telepon Sekarang
+          </a>
+        </div>
+      </div>
+      <div class="jec-cta__decor">
+        <span class="material-icons">school</span>
+        <span class="material-icons">menu_book</span>
+        <span class="material-icons">emoji_events</span>
+      </div>
+    </div>
+  </div>
+</section>
