@@ -1,5 +1,4 @@
 // ============================================
-// main.js | 30/09/2026 • 14:28:00 |
 // JEC - JAGAT EDUCATION CENTER - MAIN JS
 // SPA-like Interactions, Lazy Load, Slider
 // ============================================
@@ -13,6 +12,8 @@
   const header = document.getElementById('jec-header');
   
   function handleScroll() {
+    if (!header) return;
+    
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
     } else {
@@ -163,32 +164,40 @@
     
     // Pause on hover
     const slider = document.getElementById('heroSlider');
-    slider.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-    slider.addEventListener('mouseleave', startAutoPlay);
+    if (slider) {
+      slider.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+      slider.addEventListener('mouseleave', startAutoPlay);
+    }
   }
 
   // -------------------------------------------
   // 6. REVEAL ANIMATION (Intersection Observer)
+  //    DENGAN FALLBACK AMAN
   // -------------------------------------------
   const revealElements = document.querySelectorAll('.jec-reveal');
   
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          revealObserver.unobserve(entry.target);
-        }
+  if (revealElements.length > 0) {
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
-    });
-    
-    revealElements.forEach(el => revealObserver.observe(el));
-  } else {
-    // Fallback
-    revealElements.forEach(el => el.classList.add('revealed'));
+      
+      revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+      // FALLBACK: Jika IntersectionObserver tidak didukung,
+      // langsung tampilkan semua elemen (agar post tidak hilang)
+      revealElements.forEach(el => {
+        el.classList.add('revealed');
+      });
+    }
   }
 
   // -------------------------------------------
@@ -201,7 +210,6 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
-          // Already has src via native lazy load, just add class when loaded
           img.addEventListener('load', () => {
             img.classList.add('loaded');
           });
@@ -217,6 +225,9 @@
     });
     
     lazyImages.forEach(img => imageObserver.observe(img));
+  } else {
+    // Fallback: tampilkan semua gambar langsung
+    lazyImages.forEach(img => img.classList.add('loaded'));
   }
 
   // -------------------------------------------
