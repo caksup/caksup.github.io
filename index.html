@@ -2,17 +2,90 @@
 layout: default
 ---
 
+<!-- ==== CSS KHUSUS UNTUK LANDING PAGE & CAROUSEL ==== -->
+<style>
+  .hero-section { text-align: center; margin-bottom: 3rem; }
+  .btn-daftar { display: inline-block; background: #10b981; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 15px; }
+  .btn-daftar:hover { background: #059669; color: white; text-decoration: none; }
+  
+  /* Styling Carousel (Slider) */
+  .slider-container { width: 100%; max-width: 800px; margin: 0 auto 3rem; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }
+  .slider-inner { display: flex; transition: transform 0.5s ease-in-out; }
+  .slider-item { min-width: 100%; box-sizing: border-box; }
+  .slider-item img { width: 100%; height: auto; display: block; }
+  
+  /* Styling Program Unggulan */
+  .program-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 4rem; }
+  .program-card { background: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; text-align: center; }
+  .program-card h3 { margin-top: 0; color: #2563eb; font-size: 1.2rem; }
+</style>
+
+<!-- ==== 1. CAROUSEL / SLIDER GAMBAR ==== -->
+<div class="slider-container">
+  <div class="slider-inner" id="sliderInner">
+    <!-- Gambar 1 -->
+    <div class="slider-item">
+      <img src="https://via.placeholder.com/800x400/2563eb/ffffff?text=Selamat+Datang+di+JEC" alt="Banner 1">
+    </div>
+    <!-- Gambar 2 -->
+    <div class="slider-item">
+      <img src="https://via.placeholder.com/800x400/10b981/ffffff?text=Pendaftaran+Tahun+2026+Dibuka" alt="Banner 2">
+    </div>
+    <!-- Gambar 3 -->
+    <div class="slider-item">
+      <img src="https://via.placeholder.com/800x400/f59e0b/ffffff?text=Metode+JAGAT+-+Belajar+Lebih+Mudah" alt="Banner 3">
+    </div>
+  </div>
+</div>
+
+<!-- Script Sederhana Penggerak Carousel (Otomatis Geser Tiap 3 Detik) -->
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slider-item');
+  const totalSlides = slides.length;
+  const sliderInner = document.getElementById('sliderInner');
+
+  setInterval(() => {
+    slideIndex = (slideIndex + 1) % totalSlides;
+    sliderInner.style.transform = `translateX(-${slideIndex * 100}%)`;
+  }, 3000);
+</script>
+
+<!-- ==== 2. INFO LANDING PAGE ==== -->
+<div class="hero-section">
+  <h2 style="margin-bottom: 10px;">Bimbingan Belajar & Bahasa Inggris Terpadu</h2>
+  <p>Membangun fondasi bahasa yang kuat dan percaya diri untuk generasi unggul di Jatirogo, Tuban. Bersama <strong>Jagat Education Center</strong>, raih prestasimu sekarang!</p>
+  
+  <!-- Ganti nomor HP di bawah ini dengan nomor WA JEC -->
+  <a href="https://wa.me/6281234567890" class="btn-daftar">Daftar Sekarang via WhatsApp</a>
+</div>
+
+<div class="program-grid">
+  <div class="program-card">
+    <h3>English for Kids</h3>
+    <p>Belajar bahasa Inggris menyenangkan dengan metode interaktif untuk anak.</p>
+  </div>
+  <div class="program-card">
+    <h3>Bimbel Sekolah</h3>
+    <p>Pendampingan belajar untuk meningkatkan nilai akademik SD & SMP.</p>
+  </div>
+  <div class="program-card">
+    <h3>JAGAT Method</h3>
+    <p>Metode khusus agar siswa lebih cepat berani *speaking* (berbicara).</p>
+  </div>
+</div>
+
+<!-- ==== 3. DAFTAR BERITA / BLOG (Kode Bawaan Anda) ==== -->
+<h2 style="border-bottom: 2px solid #eaeaea; padding-bottom: 10px; margin-bottom: 20px;">Berita & Pengumuman Terbaru</h2>
+
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
-
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
       <div class="entry">
         {{ post.excerpt }}
       </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Baca Selengkapnya</a>
     </article>
   {% endfor %}
 </div>
