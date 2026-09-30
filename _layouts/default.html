@@ -22,15 +22,11 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
 
-  {% if page.custom_css %}
-  <style>{{ page.custom_css | scssify }}</style>
-  {% endif %}
-
   <!-- Preload Critical Resources -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
-<body>
+<body class="no-js">
   <!-- Skip Navigation -->
   <a href="#main-content" class="skip-nav">Skip to content</a>
 
@@ -158,6 +154,18 @@
   <a href="https://wa.me/6281234567890" class="jec-fab" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
     <span class="material-icons">chat_bubble</span>
   </a>
+
+  <!-- Deteksi JS & IntersectionObserver Support -->
+  <script>
+    // Hapus class no-js (artinya JS aktif)
+    document.body.classList.remove('no-js');
+    document.body.classList.add('js-enabled');
+    
+    // Deteksi dukungan IntersectionObserver
+    if (!('IntersectionObserver' in window)) {
+      document.body.classList.add('no-intersection-observer');
+    }
+  </script>
 
   <!-- Main JS -->
   <script src="{{ site.baseurl }}/assets/js/main.js"></script>
