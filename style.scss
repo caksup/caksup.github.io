@@ -2,7 +2,7 @@
 ---
 
 // ============================================
-// JEC - JAGAT EDUCATION CENTER STYLESHEET 30/09/2026 • 14:30:25
+// JEC - JAGAT EDUCATION CENTER STYLESHEET
 // Modern, Responsive, SPA-ready Design
 // ============================================
 
@@ -12,7 +12,6 @@
 @import "reset";
 
 :root {
-  // Colors
   --jec-primary: #2563eb;
   --jec-primary-dark: #1d4ed8;
   --jec-primary-light: #dbeafe;
@@ -21,7 +20,6 @@
   --jec-accent: #f59e0b;
   --jec-danger: #ef4444;
   
-  // Neutrals
   --jec-dark: #0f172a;
   --jec-gray-900: #1e293b;
   --jec-gray-800: #334155;
@@ -34,28 +32,23 @@
   --jec-gray-100: #f8fafc;
   --jec-white: #ffffff;
   
-  // Typography
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
   
-  // Spacing
   --container-max: 1200px;
   --container-narrow: 740px;
   
-  // Effects
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   
-  // Radius
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
   
-  // Transitions
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -148,7 +141,6 @@ ul, ol {
   border-radius: var(--radius-sm);
 }
 
-// Text gradient utility
 .text-gradient {
   background: linear-gradient(135deg, var(--jec-primary) 0%, var(--jec-secondary) 100%);
   -webkit-background-clip: text;
@@ -278,7 +270,6 @@ ul, ol {
   font-size: 28px;
 }
 
-// Mobile Navigation
 @media (max-width: 900px) {
   .jec-header__nav,
   .jec-header__cta {
@@ -486,7 +477,6 @@ ul, ol {
   color: var(--jec-gray-600);
 }
 
-// Hero Visual / Slider
 .jec-hero__visual {
   position: relative;
 }
@@ -575,7 +565,6 @@ ul, ol {
 .jec-slider__btn--prev { left: 12px; }
 .jec-slider__btn--next { right: 12px; }
 
-// Floating Cards
 .jec-hero__float-card {
   position: absolute;
   display: flex;
@@ -625,7 +614,6 @@ ul, ol {
   50% { transform: translateY(-10px); }
 }
 
-// Wave divider
 .jec-wave-divider {
   position: absolute;
   bottom: -1px;
@@ -1409,24 +1397,38 @@ ul, ol {
 }
 
 // -------------------------------------------
-// 15. REVEAL ANIMATION (SPA-like)
+// 15. REVEAL ANIMATION (FIXED - POST AMAN)
 // -------------------------------------------
+// Default: elemen SELALU terlihat (aman untuk post)
 .jec-reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.jec-reveal.revealed {
+// Hanya sembunyikan jika JS aktif DAN browser mendukung
+.js-enabled .jec-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.js-enabled .jec-reveal.revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
-// Staggered reveal
-.jec-reveal:nth-child(1) { transition-delay: 0.05s; }
-.jec-reveal:nth-child(2) { transition-delay: 0.15s; }
-.jec-reveal:nth-child(3) { transition-delay: 0.25s; }
-.jec-reveal:nth-child(4) { transition-delay: 0.35s; }
+// Fallback untuk browser lama
+.no-js .jec-reveal,
+.no-intersection-observer .jec-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+// Staggered delay
+.js-enabled .jec-reveal:nth-child(1) { transition-delay: 0.05s; }
+.js-enabled .jec-reveal:nth-child(2) { transition-delay: 0.15s; }
+.js-enabled .jec-reveal:nth-child(3) { transition-delay: 0.25s; }
+.js-enabled .jec-reveal:nth-child(4) { transition-delay: 0.35s; }
 
 // -------------------------------------------
 // 16. LAZY LOAD IMAGE PLACEHOLDER
@@ -1552,7 +1554,7 @@ img[loading="lazy"].loaded {
 }
 
 // -------------------------------------------
-// 18. POST PAGE STYLES (Keep compatibility)
+// 18. POST PAGE STYLES
 // -------------------------------------------
 .post {
   max-width: var(--container-narrow);
@@ -1593,5 +1595,4 @@ img[loading="lazy"].loaded {
   border-bottom-color: var(--jec-primary);
 }
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
 @import "highlights";
