@@ -3,13 +3,13 @@
 #
 
 # Name of your site (displayed in the header)
-name: Sup Jagat Web Blog
+name: Jagat Education Center (JEC)
 
 # Short bio or description (displayed in the header)
-description: Web Developer from Somewhere
+description: Pusat Bimbingan Belajar dan Kursus Bahasa Inggris di Jatirogo, Tuban.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
+avatar: https://avatars.githubusercontent.com/caksup
 
 #
 # Flags below are optional
@@ -18,18 +18,18 @@ avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/je
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:
+  email: # Isi dengan alamat email Anda jika ingin menampilkan ikon email
   facebook:
   flickr:
-  github: caksup.github.io
-  instagram:
+  github: caksup
+  instagram: # Isi dengan username IG Anda, misal: jagat.education
   linkedin:
   pinterest:
-  rss: # just type anything here for a working RSS icon
+  rss: rss
   twitter: caksup
-  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
+  stackoverflow: 
+  youtube: 
+  googleplus: 
 
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
@@ -41,13 +41,13 @@ google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url:https://caksup.github.io
+url: "https://jagatec.biz.id"
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: "/weblog"
+baseurl: ""
 
 #
 # !! You don't need to change any of the configuration flags below !!
@@ -73,7 +73,7 @@ sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-gems:
+plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
 
