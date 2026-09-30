@@ -1,51 +1,169 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ site.description }}">
+  
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="{{ site.baseurl }}/images/favicon.png">
+  
+  <!-- Jekyll Feed -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl }}/feed.xml">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
 
-    {% include meta.html %}
+  {% if page.custom_css %}
+  <style>{{ page.custom_css | scssify }}</style>
+  {% endif %}
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <!-- Preload Critical Resources -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+<body>
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="skip-nav">Skip to content</a>
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
-
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
-
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
+  <!-- HEADER / NAVIGATION -->
+  <header class="jec-header" id="jec-header">
+    <div class="jec-container">
+      <div class="jec-header__inner">
+        <!-- Logo -->
+        <a href="{{ site.baseurl }}/" class="jec-header__logo">
+          <span class="material-icons jec-header__logo-icon">school</span>
+          <div class="jec-header__logo-text">
+            <span class="jec-header__logo-name">JEC</span>
+            <span class="jec-header__logo-sub">Jagat Education Center</span>
           </div>
+        </a>
 
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
+        <!-- Desktop Navigation -->
+        <nav class="jec-header__nav" id="jec-nav">
+          <a href="#beranda" class="jec-nav-link active" data-section="beranda">
+            <span class="material-icons-outlined">home</span>
+            Beranda
+          </a>
+          <a href="#tentang" class="jec-nav-link" data-section="tentang">
+            <span class="material-icons-outlined">info</span>
+            Tentang
+          </a>
+          <a href="#program" class="jec-nav-link" data-section="program">
+            <span class="material-icons-outlined">book</span>
+            Program
+          </a>
+          <a href="#artikel" class="jec-nav-link" data-section="artikel">
+            <span class="material-icons-outlined">article</span>
+            Artikel
+          </a>
+          <a href="#kontak" class="jec-nav-link" data-section="kontak">
+            <span class="material-icons-outlined">contact_mail</span>
+            Kontak
+          </a>
+        </nav>
+
+        <!-- CTA Button -->
+        <a href="https://wa.me/6281234567890" class="jec-btn jec-btn--primary jec-btn--sm jec-header__cta" target="_blank" rel="noopener">
+          <span class="material-icons">chat</span>
+          Daftar Sekarang
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="jec-header__toggle" id="jec-menu-toggle" aria-label="Toggle menu">
+          <span class="material-icons">menu</span>
+        </button>
       </div>
     </div>
+  </header>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
+  <!-- MAIN CONTENT -->
+  <main id="main-content" role="main">
+    {{ content }}
+  </main>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
+  <!-- FOOTER -->
+  <footer class="jec-footer">
+    <div class="jec-container">
+      <div class="jec-footer__grid">
+        <!-- Brand -->
+        <div class="jec-footer__col">
+          <div class="jec-footer__brand">
+            <span class="material-icons">school</span>
+            <span>Jagat Education Center</span>
+          </div>
+          <p class="jec-footer__desc">Pusat bimbingan belajar dan kursus bahasa Inggris terpercaya di Jatirogo, Tuban. Membangun generasi cerdas dan percaya diri.</p>
+          <div class="jec-footer__social">
+            <a href="#" aria-label="Instagram"><span class="material-icons">photo_camera</span></a>
+            <a href="#" aria-label="Facebook"><span class="material-icons">groups</span></a>
+            <a href="#" aria-label="YouTube"><span class="material-icons">play_circle</span></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="jec-footer__col">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang Kami</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#artikel">Artikel</a></li>
+          </ul>
+        </div>
+
+        <!-- Programs -->
+        <div class="jec-footer__col">
+          <h4>Program</h4>
+          <ul>
+            <li><a href="#program">English for Kids</a></li>
+            <li><a href="#program">English for Teens</a></li>
+            <li><a href="#program">Bimbel SD & SMP</a></li>
+            <li><a href="#program">JAGAT Method</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="jec-footer__col">
+          <h4>Hubungi Kami</h4>
+          <ul class="jec-footer__contact">
+            <li><span class="material-icons-outlined">location_on</span> Jatirogo, Tuban, Jawa Timur</li>
+            <li><span class="material-icons-outlined">schedule</span> Senin - Sabtu, 08:00 - 20:00</li>
+            <li><span class="material-icons-outlined">phone</span> +62 812-3456-7890</li>
+            <li><span class="material-icons-outlined">email</span> info@jagatec.biz.id</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="jec-footer__bottom">
+        <p>&copy; {{ site.time | date: '%Y' }} Jagat Education Center. All rights reserved.</p>
+        <p>Dibuat dengan <span class="material-icons" style="font-size:16px;vertical-align:middle;color:#ef4444;">favorite</span> di Jatirogo</p>
       </div>
     </div>
+  </footer>
 
+  <!-- Back to Top Button -->
+  <button class="jec-back-to-top" id="back-to-top" aria-label="Back to top">
+    <span class="material-icons">keyboard_arrow_up</span>
+  </button>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/6281234567890" class="jec-fab" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+    <span class="material-icons">chat_bubble</span>
+  </a>
+
+  <!-- Main JS -->
+  <script src="{{ site.baseurl }}/assets/js/main.js"></script>
+
+  {% if jekyll.environment == 'production' %}
     {% include analytics.html %}
-  </body>
+  {% endif %}
+</body>
 </html>
